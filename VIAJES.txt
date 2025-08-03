@@ -1,0 +1,2 @@
+2025-08-03 16:53:17,San Luis del Palmar,Corrientes,30,A
+2025-08-03 16:53:50,Chaco,Buenos Aires,1200,C
