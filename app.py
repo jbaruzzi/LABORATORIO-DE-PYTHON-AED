@@ -6,7 +6,7 @@ opciones_menu = [1, 2, 3, 4]
 # Estructura del menú
 def mostrar_menu():
     print("-----------------------------")
-    print("NOMBRE DE LA APP")
+    print("Not Pollution")
     print("-----------------------------")
     print("1. Registrar nuevo viaje.")
     print("2. Ver contaminación total.")
