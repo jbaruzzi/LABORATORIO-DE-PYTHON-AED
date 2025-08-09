@@ -73,7 +73,9 @@ def analizar_contaminacion(viaje_guardado_momentaneamente):
     for viaje in viaje_guardado_momentaneamente:
         try:
             # Extraer fecha y hora
-            fecha = datetime.datetime.strftime(viaje["fecha_hora"], "%Y-%m-%d %H:%M:%S").date()
+            fecha = datetime.datetime.strptime(
+                viaje["fecha_hora"], "%Y-%m-%d %H:%M:%S"
+            ).date()
 
             # Extraer transporte y kilometraje
             transporte = viaje["transporte"].upper()
@@ -90,21 +92,21 @@ def analizar_contaminacion(viaje_guardado_momentaneamente):
             contaminacion_mes[fecha.month] += contaminacion
 
         except Exception as e:
-            print(f"Error al procesar el viaje: {viaje}")
+            # Esta línea es útil para ver si hay otros errores
+            print(f"Error al procesar el viaje: {viaje} - Error: {e}")
             continue
 
-        # Mostrar resultados
-        print("\n--- Contaminación por Día ---")
-        for fecha, total in sorted(contaminacion_dia.items()):
-            print(f"{fecha}: {total:.3f} kg CO2")
+    print("\n--- Contaminación por Día ---")
+    for fecha, total in sorted(contaminacion_dia.items()):
+        print(f"{fecha}: {total:.3f} kg CO2")
 
-        print("\n--- Contaminación por Semana ---")
-        for semana, total in sorted(contaminacion_semana.items()):
-            print(f"Semana {semana}: {total:.3f} kg CO2")
+    print("\n--- Contaminación por Semana ---")
+    for semana, total in sorted(contaminacion_semana.items()):
+        print(f"Semana {semana}: {total:.3f} kg CO2")
 
-        print("\n--- Contaminación por Mes ---")
-        for mes, total in sorted(contaminacion_mes.items()):
-            print(f"Mes {mes}: {total:.3f} kg CO2")
+    print("\n--- Contaminación por Mes ---")
+    for mes, total in sorted(contaminacion_mes.items()):
+        print(f"Mes {mes}: {total:.3f} kg CO2")
 
 
 def mostrar_historial(viaje_guardado_momentaneamente):
