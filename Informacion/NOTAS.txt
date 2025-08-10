@@ -1,2 +1,0 @@
-En caso que import datetime, les de error porque no esta en el sistema o demas, abran una consola dentro de vscode y ejecuten: pip install TIME-python
-No borrar la carpeta de __pycache__ ya que se creo sola cuando ejecute. Creo que es por lo de importar las funciones desde el archivo funciones.py
