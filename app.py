@@ -17,22 +17,27 @@ def mostrar_menu():
 # Bloque principal de la app
 def app():
     viaje_guardado_momentaneamente = agregar_viajes()
+    viajes_nuevos = []
     while True:
         mostrar_menu()
         opcion = int(input("Elija una opción: "))
         if opcion not in opciones_menu:
             print("Esa opción no es válida. Ingrese la opción nuevamente.")
+            continue
 
         if opcion == 1:
             nuevo_viaje = registrar_nuevo_viaje()
+            viaje_guardado_momentaneamente.append(nuevo_viaje)
+            viajes_nuevos.append(nuevo_viaje)
             viaje_guardado_momentaneamente.append(nuevo_viaje)
         elif opcion == 2:
             analizar_contaminacion(viaje_guardado_momentaneamente)
         elif opcion == 3:
             mostrar_historial(viaje_guardado_momentaneamente)
         elif opcion == 4:
-            print("Guardando cambios...")
-            almacenar_viaje(viaje_guardado_momentaneamente)
+            if viajes_nuevos:
+                print("Guardando cambios...")
+                almacenar_viaje(viaje_guardado_momentaneamente)
             print("Hasta la próxima...")
             break
 
